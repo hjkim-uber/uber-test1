@@ -1,14 +1,25 @@
 pipeline {
     agent any
-    
+
     stages {
-        
+
         stage('github-clone') {
             steps {
                 git branch: 'main', credentialsId: 'git2', url: 'https://github.com/hjkim-uber/uber-test1'
             }
         }
-        
-   		// stage...
-   	}
+
+        stage('Run Hello Page') {
+            steps {
+                sh '''
+                    mkdir -p /tmp/hello-web
+                    cp hello.html /tmp/hello-web/index.html
+
+                    # 간단한 Python 웹서버로 hello.html 띄우기
+                    nohup python3 -m http.server 8080 --directory /tmp/hello-web > /tmp/hello.log 2>&1 &
+                '''
+                echo "Server started at http://<JENKINS-HOST>:8080"
+            }
+        }
+    }
 }
