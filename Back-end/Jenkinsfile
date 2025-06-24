@@ -5,7 +5,7 @@ pipeline {
         
         stage('github-clone') {
             steps {
-                git branch: 'BE', credentialsId: 'github_token', url: '{REPOSITORY URL}'
+                git branch: 'main', credentialsId: 'git2', url: 'https://github.com/hjkim-uber/uber-test1'
             }
         }
         
