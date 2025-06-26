@@ -1,24 +1,14 @@
 pipeline {
     agent any
-
     stages {
-
         stage('github-clone') {
             steps {
                 git branch: 'main', credentialsId: 'git2', url: 'https://github.com/hjkim-uber/uber-test1'
             }
         }
-
-        stage('Run Hello Page') {
+        stage('Deploy hello-web') {
             steps {
-                sh '''
-                    mkdir -p /tmp/hello-web
-                    cp hello.html /tmp/hello-web/index.html
-
-                    # 테스트로 Python 웹서버로 hello.html 띄우기, 이건 nks 자원연동이 아니라 jenkins po 내부 컨테이너에서 실행되는 것임
-                    nohup python3 -m http.server 9090 --directory /tmp/hello-web > /tmp/hello.log 2>&1 &
-                '''
-                echo "Server started at http://<JENKINS-HOST>:8080"
+                sh 'kubectl apply -f k8s/hello-web.yaml'
             }
         }
     }
