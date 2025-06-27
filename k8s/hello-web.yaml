@@ -7,10 +7,10 @@ data:
   index.html: |
     <!DOCTYPE html>
     <html lang="en">
-    <head><meta charset="UTF-8"><title>Hello from NKS</title></head>
+    <head><meta charset="UTF-8"><title>Hello 이혜경</title></head>
     <body>
-      <h1>Hello, Jenkins Pipeline Web!</h1>
-      <p>This page was deployed by a Jenkins pipeline.</p>
+      <h1>Hello, 이혜경!!</h1>
+      <p>주간보고 쓰세요!!</p>
     </body>
     </html>
 
