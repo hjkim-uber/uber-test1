@@ -59,4 +59,4 @@ spec:
   - protocol: TCP
     port: 9090
     targetPort: 9090
-  type: NodePort  # 필요에 따라 LoadBalancer/NodePort로 변경 가능
+  type: NodePort  # 필요에 따라 LoadBalancer/NodePort로 변경 가능& 접근 시 LB:9090/노드 공인IP:노드포트
